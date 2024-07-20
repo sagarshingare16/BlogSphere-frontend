@@ -11,3 +11,13 @@ export const fetchBlogs = async () => {
     return [];
   }
 };
+
+export const fetchBlogById = async (blogId) => {
+  const response = await fetch(`http://localhost:8181/api/v1/blogs/get-blogById/${blogId}`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch blog');
+  }
+  const data = await response.json();
+  console.log(data);
+  return data;
+};
